@@ -21,6 +21,10 @@
     margin: 60px auto;
     max-width: 700px;
   }
+
+  h1 {
+    margin-top: -1em
+  }
   
   h2,
   h2,
