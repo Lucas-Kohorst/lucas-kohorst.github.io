@@ -1,2 +1,2 @@
-# lucas-kohorst.github.io
+# kohorst.fyi
 personal website https://kohorst.fyi
