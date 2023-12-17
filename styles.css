@@ -39,7 +39,9 @@
   
   a:link,
   a:visited {
-    color: blue;
+    color: black;
+    border-bottom: 1px dotted #000;
+    text-decoration: none;
   }
   
   code,
