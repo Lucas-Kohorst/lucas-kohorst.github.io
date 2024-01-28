@@ -87,11 +87,6 @@
     font-size: 18px;
   }
   
-  a:link,
-  a:visited {
-    color: blue;
-  }
-  
   code,
   .code {
     font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
