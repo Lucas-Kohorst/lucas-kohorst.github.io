@@ -1,2 +1,2 @@
-# kohorst.esq
-personal website [https://kohorst.esq](https://kohorst.esq)
+# kohor.st   
+personal website [https://kohor.st](https://kohor.st)
