@@ -1,48 +1,170 @@
-
 <!DOCTYPE html>
 <html lang="en">
- <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Lucas Kohorst" />
-  <meta property="og:image" content="https://pbs.twimg.com/profile_images/1418173132645470208/krdvrBwo_400x400.jpg"/>
-  <link rel="icon" type="image/jpeg" href="https://pbs.twimg.com/profile_images/1418173132645470208/krdvrBwo_400x400.jpg">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Adjacent Research</title>
+    <meta property="og:image" content="https://pbs.twimg.com/profile_images/1668357289747554304/7NSJ60Fd_400x400.jpg"/>
+    <link rel="icon" type="image/jpeg" href="https://pbs.twimg.com/profile_images/1816112137627897856/Dc4NYRdj_400x400.jpg">
+    <style>
+        body, .content-container, .header, .tree, .small, .sublink_small, .sublink_small:visited {
+            margin: 0;
+            padding: 0;
+        }
+        body, .header, .tree {
+            font-family: monospace;
+        }
+        .content-container {
+            max-width: 800px;
+            margin-left: 1%;
+            padding: 20px;
+            word-wrap: break-word;
+        }
+        .header, .tree {
+            white-space: pre;
+            margin-top: 10px;
+            margin-left: 1%;
+        }
+        .header {
+            font-size: 14px;
+        }
+        .tree {
+            line-height: 1;
+            font-size: 18px;
+        }
+        .small, .sublink_small {
+            font-size: 14px;
+            text-wrap: auto;
+        }
+        .sublink_small {
+            color: black;
+        }
+        .sublink_small:visited {
+            color: gray;
+        }
+        #adjacent-press {
+            margin-top: 20px;
+        }
+        #time-display {
+            position: fixed;
+            bottom: 10px;
+            right: 10px;
+            background-color: #f0f0f0;
+            padding: 5px;
+            border: 1px solid #ccc;
+        }
+        #time-display-left {
+            position: fixed;
+            bottom: 10px;
+            left: 10px;
+            background-color: #f0f0f0;
+            padding: 5px;
+            border: 1px solid #ccc;
+            display: flex;
+            flex-direction: row;
+            gap: 10px;
+        }
+        #time-display-left a {
+            margin: 0 5px;
+        }
+        @media (max-width: 768px) {
+            #time-display-left {
+                display: flex;
+                flex-direction: column;
+                text-align: left;
+            }
+            #time-display-left a, 
+            #time-display-left code {
+                margin: 3px 0;
+            }
+        }
+        #rss-feed-press {
+            padding-left: 20px;
+            font-size: 14px;
+        }
 
-  <title>Lucas Kohorst</title>
+        #rss-feed-press a {
+            color: black;
+            text-decoration: underline dotted;
+        }
 
-  <link rel="stylesheet" href="styles.css" />
- </head>
+        #rss-feed-press a:visited {
+            color: blue;
+        }
 
- <body>
-  <div id="preamble">
-   <h1>
-    👋 Lucas
-   </h1>
+        #rss-feed-news {
+            padding-left: 20px;
+            font-size: 14px;
+        }
 
-  </div>
+        #rss-feed-news a {
+            color: black;
+            text-decoration: underline dotted;
+        }
 
-  <div>
-     <h2># Work</h2>
-      <ul>
-         <li><a href="https://foundrydigital.com">Foundry</a></li>
-         <li><a href="https://dcg.co">DCG</a></li>
-         <li><a href="https://adjacentresearch.xyz">Adjacent</a></li>
-      </ul>
+        #rss-feed-news a:visited {
+            color: blue;
+        }
 
-      <h2># Links</h2>
-      <ul>
-         <li><a href="https://t.me/lucaskohorst">Telegram</a></li>
-         <li><a href="https://twitter.com/KohorstLucas">X / Twitter</a></li>
-         <li><a href="https://github.com/Lucas-Kohorst">Github</a></li>
-         <li><code><a href="mailto:lucas@kohor.st">lucas@kohor.st</a></code></li>
-         <li>Curation <a href="https://sublime.app/lucas">Sublime</a> (Digital) and <a href="https://www.corner.inc/lucas">Corner</a> (Physical)</li>
-      </ul>
-   </p>
-  </div>
+        .rss-item {
+            display: flex;
+            align-items: flex-start;
+            padding: 0.25em;
+        }
 
-  <!-- <iframe src="https://press.adjacentresearch.xyz/embed" width="480" he
-ight="320" style="background:white;"
-frameborder="0" scrolling="no"></if rame> -->
+        .rss-item::before {
+            content: "├──";
+            margin-right: 5px;
+        }
 
- </body>
+        .rss-item:last-child::before {
+            content: "└──";
+        }
+    </style>
+</head>
+<body>
+<div class="content-container">
+<div class="tree">
+<a class="small" style="font-style: italic;">lucas kohorst</a>
+<a href="https://foundrydigital.com" class="small">foundry</a>
+<a href="https://dcg.co" class="small">dcg</a>
+<a href="https://adjacentresearch.xyz" class="small">adjacent</a>
+</div>
+<div id="time-display" style="text-align: right;">
+<span id="sf-time"></span><br>
+<span id="nyc-time" style="text-align: left;"></span><br>
+<span id="london-time" style="display: flex; justify-content: space-between;"></span>
+</div>
+
+<div id="time-display-left">
+<a href="https://t.me/lucaskohorst">telegram</a>
+<a href="https://twitter.com/KohorstLucas">x</a>
+<a href="https://github.com/Lucas-Kohorst">github</a>
+<code><a href="mailto:lucas@kohor.st">lucas@kohor.st</a></code>
+<a href="https://sublime.app/lucas">sublime</a>
+<a href="https://corner.inc/lucas">corner</a>
+</div>
+</div>
+
+</div>
+
+<script>
+// Update time
+function updateTime() {
+    const now = new Date();
+    
+    const nycTime = now.toLocaleTimeString('en-US', { timeZone: 'America/New_York', hour: '2-digit', minute: '2-digit' });
+    document.getElementById('nyc-time').textContent = `NYC: ${nycTime}`;
+    
+    const sfTime = now.toLocaleTimeString('en-US', { timeZone: 'America/Los_Angeles', hour: '2-digit', minute: '2-digit' });
+    document.getElementById('sf-time').textContent = `SF: ${sfTime}`;
+    
+    const londonTime = now.toLocaleTimeString('en-US', { timeZone: 'Europe/London', hour: '2-digit', minute: '2-digit' });
+    document.getElementById('london-time').textContent = `Lisbon: ${londonTime}`;
+}
+
+setInterval(updateTime, 1000);
+updateTime(); // Initial call
+
+</script>
+</body>
 </html>
