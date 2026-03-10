@@ -33,16 +33,11 @@ jobs:
 
       - name: Build with Jekyll
         run: bundle exec jekyll build
-        environment:
-          NODE_ENV: production
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
 
   deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     needs: build
     steps:
