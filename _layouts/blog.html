@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{{ page.title | default: "Blog" }}</title>
     <link rel="icon" type="image/jpeg" href="https://pbs.twimg.com/profile_images/1816112137627897856/Dc4NYRdj_400x400.jpg">
     <style>
@@ -39,54 +38,6 @@
             color: black;
         }
         .sublink_small:visited {
-            color: gray;
-        }
-        .post {
-            margin-bottom: 2em;
-            padding-bottom: 1em;
-            border-bottom: 1px solid #ddd;
-        }
-        .post-title {
-            font-size: 20px;
-            font-weight: bold;
-            margin-bottom: 0.25em;
-        }
-        .post-date {
-            font-size: 14px;
-            color: #666;
-            margin-bottom: 0.5em;
-        }
-        .post-excerpt {
-            font-size: 16px;
-            line-height: 1.6;
-        }
-        .upvote-section {
-            margin-top: 0.5em;
-            display: flex;
-            align-items: center;
-            gap: 0.5em;
-        }
-        .upvote-btn {
-            background: none;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            padding: 4px 8px;
-            cursor: pointer;
-            font-size: 14px;
-            font-family: monospace;
-        }
-        .upvote-btn:hover {
-            background-color: #f0f0f0;
-        }
-        .upvote-count {
-            font-size: 14px;
-            color: #333;
-        }
-        a {
-            color: black;
-            text-decoration: underline;
-        }
-        a:visited {
             color: gray;
         }
     </style>
