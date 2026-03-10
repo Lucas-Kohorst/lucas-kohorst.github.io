@@ -1,3 +1,8 @@
+---
+layout: post
+title: generations
+---
+
 # generations
 i have been iterating on generations, a casual gaming studio, building impactful games. 
 
@@ -10,4 +15,3 @@ as younger generations get online for the first time it's likely they will not b
 generations is focused on being a fun / casual word game and more importantly helping players to increase their ability of detecting generative content. 
 
 you can play it at [generations.work](https://generations.work)
-
