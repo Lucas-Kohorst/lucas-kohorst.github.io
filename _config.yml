@@ -1,1 +1,5 @@
-mkdir -p /Users/lucas/Desktop/work/lucas-kohorst.github.io/_layouts
+title: Lucas Kohorst
+description: Personal website and blog
+url: https://lucas-kohorst.github.io
+
+theme: null
