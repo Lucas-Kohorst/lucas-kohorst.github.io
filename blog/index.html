@@ -4,7 +4,7 @@ title: Blog
 ---
 
 {% for post in site.posts %}
-  <li>
-    <a href="{{ post.url }}" class="small" style="font-style: italic;">{{ post.date | date: "%m/%d/%Y" }} {{ post.title }}</a>
-  </li>
+<div style="margin-bottom: 2em;">
+<a href="{{ post.url }}" class="small" style="font-style: italic;">{{ post.date | date: "%m/%d/%Y" }} {{ post.title }}</a>
+</div>
 {% endfor %}

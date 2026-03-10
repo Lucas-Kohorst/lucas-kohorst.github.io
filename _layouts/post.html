@@ -50,10 +50,20 @@
             color: #5b21b6;
             text-decoration: underline;
         }
+        .post-nav {
+            margin-bottom: 48px;
+        }
+        .post-nav a {
+            color: #5b21b6;
+            text-decoration: underline;
+            font-size: 16px;
+        }
     </style>
 </head>
 <body>
-    <a href="/" class="site-nav">← home</a>
+    <div class="post-nav">
+        <a href="/">← home</a>
+    </div>
 
     <h1>{{ page.title }}</h1>
     <div class="date">{{ page.date | date: "%d %b, %Y" }}</div>

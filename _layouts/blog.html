@@ -27,18 +27,13 @@
             font-size: 14px;
         }
         .tree {
-            line-height: 1;
+            line-height: 1.6;
             font-size: 18px;
+            white-space: normal;
+            display: block;
         }
-        .small, .sublink_small {
-            font-size: 14px;
-            text-wrap: auto;
-        }
-        .sublink_small {
-            color: black;
-        }
-        .sublink_small:visited {
-            color: gray;
+        .tree a {
+            display: block;
         }
     </style>
 </head>
@@ -46,9 +41,7 @@
 <div class="content-container">
 <div class="tree">
     <a href="/" class="small">home</a>
-    <ul>
-      {{ content }}
-    </ul>
+    {{ content }}
 </div>
 </div>
 </body>

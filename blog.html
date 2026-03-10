@@ -18,18 +18,13 @@
             font-size: 14px;
         }
         .tree {
-            line-height: 1;
+            line-height: 1.6;
             font-size: 18px;
+            white-space: normal;
+            display: block;
         }
-        .small, .sublink_small {
-            font-size: 14px;
-            text-wrap: auto;
-        }
-        .sublink_small {
-            color: black;
-        }
-        .sublink_small:visited {
-            color: gray;
+        .tree a {
+            display: block;
         }
     </style>
 </head>
@@ -37,13 +32,16 @@
 <div class="content-container">
 <div class="tree">
     <a href="/" class="small">home</a>
-    <ul>
-      <li><a href="/blog/" class="small" style="font-style: italic;">blog index</a></li>
-      <li><a href="/feed.xml" class="small">feed (rss)</a></li>
-      <li><a href="https://kohor.st/blog/generations.html" class="small">generations (old)</a></li>
-    </ul>
+<div style="margin-bottom: 2em;">
+<a href="/blog/" class="small" style="font-style: italic;">blog index</a>
 </div>
-
+<div style="margin-bottom: 2em;">
+<a href="/feed.xml" class="small">feed (rss)</a>
+</div>
+<div>
+<a href="https://kohor.st/blog/generations.html" class="small">generations (old)</a>
+</div>
+</div>
 </div>
 </body>
 </html>
