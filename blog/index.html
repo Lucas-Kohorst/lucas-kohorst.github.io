@@ -1,0 +1,47 @@
+---
+layout: blog
+title: Blog
+---
+
+{% for post in site.posts %}
+  <li style="margin-bottom: 1.5em;">
+    <a href="{{ post.url }}" class="post-title">{{ post.title }}</a>
+    <div class="post-date">{{ post.date | date: "%d %b, %Y" }}</div>
+    <div class="post-excerpt">
+      {{ post.excerpt | strip_html }}
+    </div>
+    <div class="upvote-section">
+      <button class="upvote-btn" onclick="upvotePost('{{ post.url | relative_url }}')">▲</button>
+      <span class="upvote-count" id="upvote-count-{{ post.url | replace: '/', '-' }}">{{ post.upvotes | default: 0 }}</span>
+    </div>
+  </li>
+{% endfor %}
+
+<script>
+async function upvotePost(postUrl) {
+    try {
+        const response = await fetch('https://upvote-api.kohor.st/api/upvote', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ post: postUrl })
+        });
+        const data = await response.json();
+        document.getElementById(`upvote-count-${postUrl.replace('/', '-')}`).textContent = data.upvotes;
+    } catch (error) {
+        console.error('Upvote failed:', error);
+    }
+}
+
+document.addEventListener('DOMContentLoaded', async () => {
+    {% for post in site.posts %}
+        const url{{ forloop.index }} = '{{ post.url | relative_url }}';
+        try {
+            const response{{ forloop.index }} = await fetch(`https://upvote-api.kohor.st/api/upvote/${url{{ forloop.index }}}`);
+            const data{{ forloop.index }} = await response{{ forloop.index }}.json();
+            document.getElementById(`upvote-count-${url{{ forloop.index }}.replace('/', '-')}`).textContent = data{{ forloop.index }}.upvotes || 0;
+        } catch (error) {
+            console.error('Failed to load upvotes:', error);
+        }
+    {% endfor %}
+});
+</script>

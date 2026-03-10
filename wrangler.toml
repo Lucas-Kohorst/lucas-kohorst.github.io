@@ -1,0 +1,7 @@
+name = "upvote-api"
+main = "worker.js"
+compatibility_date = "2024-01-01"
+
+[[kv_namespaces]]
+binding = "UPVOTE_DB"
+id = "YOUR_KV_NAMESPACE_ID"
