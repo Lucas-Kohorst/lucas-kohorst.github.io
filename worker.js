@@ -20,7 +20,7 @@ export default {
       return handleMarkdown(path, corsHeaders);
     }
 
-    return new Response('Not Found', { status: 404 });
+    return fetch(request);
   }
 };
 
