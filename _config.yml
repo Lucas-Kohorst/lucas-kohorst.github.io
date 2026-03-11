@@ -1,5 +1,6 @@
 title: Lucas Kohorst
 description: Personal website and blog
 url: https://lucas-kohorst.github.io
+permalink: /blog/:year/:month/:day/:title/
 
 theme: null

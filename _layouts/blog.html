@@ -3,6 +3,7 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{{ page.title | default: "Blog" }}</title>
+    <meta property="og:image" content="https://pbs.twimg.com/profile_images/1668357289747554304/7NSJ60Fd_400x400.jpg"/>
     <link rel="icon" type="image/jpeg" href="https://pbs.twimg.com/profile_images/1816112137627897856/Dc4NYRdj_400x400.jpg">
     <style>
         body, .content-container, .header, .tree, .small, .sublink_small, .sublink_small:visited {
@@ -40,25 +41,13 @@
         .sublink_small:visited {
             color: gray;
         }
-        #rss-feed-press {
-            padding-left: 20px;
-            font-size: 14px;
-        }
-
-        #rss-feed-press a {
-            color: black;
-            text-decoration: underline dotted;
-        }
-
-        #rss-feed-press a:visited {
-            color: blue;
-        }
     </style>
 </head>
 <body>
 <div class="content-container">
 <div class="tree">
-    <a href="/" class="small">home</a>{{ content }}
+<a href="/" class="small">home</a><a href="/blog/" class="small" style="font-style: italic;">index</a>
+{{ content }}
 </div>
 </div>
 </body>
