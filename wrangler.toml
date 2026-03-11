@@ -4,4 +4,4 @@ compatibility_date = "2024-01-01"
 
 [[kv_namespaces]]
 binding = "UPVOTE_DB"
-id = "YOUR_KV_NAMESPACE_ID"
+id = "a7ed8b7ed5834e9b8c674f7d7245427a"

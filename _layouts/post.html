@@ -58,6 +58,32 @@
             text-decoration: underline;
             font-size: 16px;
         }
+        .upvote-container {
+            margin-top: 24px;
+            padding-top: 24px;
+            border-top: 1px solid #ddd;
+        }
+        .upvote-btn {
+            background: #5b21b6;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            font-size: 14px;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+        .upvote-btn:hover {
+            background: #4a1a9e;
+        }
+        .upvote-btn:disabled {
+            background: #999;
+            cursor: not-allowed;
+        }
+        .upvote-count {
+            margin-left: 8px;
+            font-size: 14px;
+            color: #444;
+        }
     </style>
 </head>
 <body>
@@ -71,5 +97,62 @@
     <div class="content">
         {{ content }}
     </div>
+
+    <div class="upvote-container">
+        <button class="upvote-btn" id="upvoteBtn">▲ Upvote</button>
+        <span class="upvote-count" id="upvoteCount">Loading...</span>
+    </div>
+
+    <script>
+        const postSlug = "{{ page.url }}".split('/').filter(Boolean).pop().replace('.html', '');
+        const API_BASE = 'https://upvote-api.kohorstlucas.workers.dev';
+        
+        function hasVoted() {
+            try {
+                return localStorage.getItem('voted:' + postSlug) === 'true';
+            } catch (e) {
+                return false;
+            }
+        }
+        
+        function setVoted() {
+            try {
+                localStorage.setItem('voted:' + postSlug, 'true');
+            } catch (e) {}
+        }
+        
+        async function updateUpvote() {
+            try {
+                const res = await fetch(API_BASE + '/api/upvote/' + postSlug);
+                const data = await res.json();
+                const voted = hasVoted();
+                document.getElementById('upvoteCount').textContent = data.count + ' upvotes';
+                document.getElementById('upvoteBtn').disabled = voted;
+                document.getElementById('upvoteBtn').textContent = voted ? 'Upvoted' : '▲ Upvote';
+            } catch (e) {
+                document.getElementById('upvoteCount').textContent = 'Error loading';
+            }
+        }
+
+        document.getElementById('upvoteBtn').addEventListener('click', async () => {
+            if (hasVoted()) return;
+            
+            try {
+                const res = await fetch(API_BASE + '/api/upvote/' + postSlug, { 
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' }
+                });
+                const data = await res.json();
+                setVoted();
+                document.getElementById('upvoteCount').textContent = data.count + ' upvotes';
+                document.getElementById('upvoteBtn').disabled = true;
+                document.getElementById('upvoteBtn').textContent = 'Upvoted';
+            } catch (e) {
+                alert('Error upvoting');
+            }
+        });
+
+        updateUpvote();
+    </script>
 </body>
 </html>
