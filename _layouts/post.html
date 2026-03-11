@@ -62,25 +62,28 @@
             margin-top: 24px;
             padding-top: 24px;
             border-top: 1px solid #ddd;
+            display: flex;
+            align-items: center;
         }
         .upvote-btn {
-            background: #5b21b6;
-            color: white;
+            background: none;
+            color: #111;
             border: none;
-            padding: 8px 16px;
+            padding: 4px;
             font-size: 14px;
             cursor: pointer;
-            border-radius: 4px;
+            display: inline-flex;
+            align-items: center;
         }
         .upvote-btn:hover {
-            background: #4a1a9e;
+            color: #444;
         }
         .upvote-btn:disabled {
-            background: #999;
+            color: #999;
             cursor: not-allowed;
         }
         .upvote-count {
-            margin-left: 8px;
+            margin-left: 4px;
             font-size: 14px;
             color: #444;
         }
@@ -88,7 +91,7 @@
 </head>
 <body>
     <div class="post-nav">
-        <a href="/">← home</a>
+        <a href="/">home</a>
     </div>
 
     <h1>{{ page.title }}</h1>
@@ -110,7 +113,7 @@
 
     <script>
         const postSlug = "{{ page.url }}".split('/').filter(Boolean).pop().replace('.html', '');
-        const API_BASE = 'https://upvote-api.kohorstlucas.workers.dev';
+        const API_BASE = window.location.hostname === 'kohor.st' ? '' : 'https://upvote-api.kohorstlucas.workers.dev';
         
         function hasVoted() {
             try {

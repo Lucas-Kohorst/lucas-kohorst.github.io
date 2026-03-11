@@ -16,11 +16,15 @@ export default {
       return handleUpvote(request, env, ctx, path, corsHeaders);
     }
 
-    if (path.match(/^\/blog\/[^\/]+\.md$/)) {
+    if (path.match(/^\/blog\/.*\.md$/)) {
       return handleMarkdown(path, corsHeaders);
     }
 
-    return fetch(request);
+    // Only pass through to origin on custom domain (kohor.st), not on workers.dev
+    if (url.hostname === 'kohor.st') {
+      return fetch(request);
+    }
+    return new Response('Not Found', { status: 404 });
   }
 };
 
@@ -61,7 +65,8 @@ async function handleUpvote(request, env, ctx, path, corsHeaders) {
 }
 
 async function handleMarkdown(path, corsHeaders) {
-  const slug = path.replace('/blog/', '').replace('.md', '');
+  // Extract slug from paths like /blog/generations.md or /blog/2026/02/20/generations.md
+  const slug = path.replace('.md', '').split('/').filter(Boolean).pop();
   
   const listResponse = await fetch('https://api.github.com/repos/Lucas-Kohorst/lucas-kohorst.github.io/contents/_posts');
   if (!listResponse.ok) {
