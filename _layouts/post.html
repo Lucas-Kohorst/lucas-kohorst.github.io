@@ -99,7 +99,7 @@
     </div>
 
     <div class="upvote-container">
-        <button class="upvote-btn" id="upvoteBtn">▲ Upvote</button>
+        <button class="upvote-btn" id="upvoteBtn">^^</button>
         <span class="upvote-count" id="upvoteCount">Loading...</span>
     </div>
 
@@ -128,7 +128,7 @@
                 const voted = hasVoted();
                 document.getElementById('upvoteCount').textContent = data.count + ' upvotes';
                 document.getElementById('upvoteBtn').disabled = voted;
-                document.getElementById('upvoteBtn').textContent = voted ? 'Upvoted' : '▲ Upvote';
+                document.getElementById('upvoteBtn').textContent = '^^';
             } catch (e) {
                 document.getElementById('upvoteCount').textContent = 'Error loading';
             }
