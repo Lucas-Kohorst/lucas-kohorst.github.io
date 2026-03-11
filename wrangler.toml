@@ -2,6 +2,11 @@ name = "upvote-api"
 main = "worker.js"
 compatibility_date = "2024-01-01"
 
+routes = [
+  { pattern = "kohor.st/blog/*.md" },
+  { pattern = "kohor.st/api/upvote/*" }
+]
+
 [[kv_namespaces]]
 binding = "UPVOTE_DB"
 id = "a7ed8b7ed5834e9b8c674f7d7245427a"
