@@ -2,9 +2,4 @@ name = "upvote-api"
 main = "worker.js"
 compatibility_date = "2024-01-01"
 workers_dev = true
-
-routes = ["kohor.st/blog/*", "kohor.st/api/upvote/*"]
-
-[[kv_namespaces]]
-binding = "UPVOTE_DB"
-id = "a7ed8b7ed5834e9b8c674f7d7245427a"
+account_id = "e97e3b873befcbbb5a1fc8bbbce0a966"
