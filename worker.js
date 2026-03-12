@@ -16,6 +16,12 @@ export default {
       return handleUpvote(request, env, ctx, path, corsHeaders);
     }
 
+    // Serve blog content from GitHub Pages
+    if (url.hostname === 'kohor.st' && (path === '/blog/' || path === '/blog' || path.startsWith('/blog/'))) {
+      const blogUrl = request.url.replace('https://kohor.st', 'https://lucas-kohorst.github.io');
+      return fetch(new Request(blogUrl, request));
+    }
+
     // Only pass through to origin on custom domain (kohor.st), not on workers.dev
     if (url.hostname === 'kohor.st') {
       return fetch(request);
