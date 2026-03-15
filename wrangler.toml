@@ -1,5 +1,10 @@
 name = "upvote-api"
 main = "worker.js"
 compatibility_date = "2024-01-01"
-workers_dev = true
 account_id = "e97e3b873befcbbb5a1fc8bbbce0a966"
+
+routes = [
+  { pattern = "kohor.st", zone_name = "kohor.st" },
+  { pattern = "kohor.st/blog/*", zone_name = "kohor.st" },
+  { pattern = "kohor.st/api/upvote/*", zone_name = "kohor.st" }
+]
